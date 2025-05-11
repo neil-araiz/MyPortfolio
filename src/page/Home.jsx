@@ -1,31 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Header } from "@/components/Header";
-import { experience } from "@/components/ExpList";
-
-const Circle = () => {
-  return <div className="rounded-full w-4 h-4 bg-accent mx-auto"></div>;
-};
-
-const Pillar = () => {
-  return <div className="rounded-t-full w-2 h-full bg-accent mx-auto"></div>;
-};
-
-const ExpCard = ({ date, heading, body, company }) => {
-  return (
-    <div className="group p-4 flex flex-col space-y-1 rounded border-2 border-background-primary hover:bg-accent hover:-translate-y-2 hover:shadow-lg transition duration-300 ease-in-out">
-      <p className="text-secondary text-center group-hover:text-black transition-colors duration-300">
-        {date}
-      </p>
-      <p className="text-xl font-semibold text-heading text-center group-hover:text-black transition-colors duration-300">
-        {heading}
-      </p>
-      <p className="text-center text-heading group-hover:text-black transition-colors duration-300">{company}</p>
-      <p className="text-primary text-sm text-center group-hover:text-black transition-colors duration-300">
-        {body}
-      </p>
-    </div>
-  );
-};
+import { Education, Experience, SkillsTools } from "@/components/About";
 
 const Home = () => {
   return (
@@ -70,62 +45,10 @@ const Home = () => {
             Experience
           </h1>
         </div>
-
-        <div className="flex flex-col gap-y-3 w-full my-4">
-          <Circle />
-
-          {experience.map((exp, key) => {
-            return (
-              <Fragment key={key}>
-                <div className="grid grid-cols-[1fr_auto_1fr] gap-x-4 items-center mx-auto">
-                  {exp.direction === "right" ? (
-                    <ExpCard
-                      date={exp.date}
-                      heading={exp.heading}
-                      body={exp.body}
-                      company={exp.company}
-                    />
-                  ) : (
-                    <div></div>
-                  )}
-
-                  <Pillar />
-
-                  {exp.direction === "left" ? (
-                    <ExpCard
-                      date={exp.date}
-                      heading={exp.heading}
-                      body={exp.body}
-                      company={exp.company}
-                    />
-                  ) : (
-                    <div></div>
-                  )}
-                </div>
-                {key < experience.length - 1 && <Circle />}
-              </Fragment>
-            );
-          })}
-
-          <Circle />
-        </div>
+        <Experience />
       </div>
-
-      <div className="bg-background-tertiary space-y-6 px-10 py-10">
-        <div className="h-10 flex items-center justify-center">
-          <h1 className="text-accent text-4xl font-bold w-fit border-b-2 border-accent">
-            Education
-          </h1>
-        </div>
-      </div>
-
-      <div className="bg-background-tertiary space-y-6 px-10 py-10">
-        <div className="h-10 flex items-center justify-center">
-          <h1 className="text-accent text-4xl font-bold w-fit border-b-2 border-accent">
-            Skills and Tools
-          </h1>
-        </div>
-      </div>
+      <Education />
+      <SkillsTools />
     </div>
   );
 };
