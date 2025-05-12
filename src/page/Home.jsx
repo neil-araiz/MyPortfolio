@@ -1,6 +1,11 @@
 import React from "react";
 import { Header } from "@/components/Header";
 import { Education, Experience, SkillsTools } from "@/components/About";
+import { Project } from "@/components/Project";
+import { Blog } from "@/components/Blog";
+import Fb from "@/assets/fb.png";
+import Ig from "@/assets/insta.png";
+import LinkedIn from "@/assets/linkedin.png";
 
 const Home = () => {
   return (
@@ -39,19 +44,57 @@ const Home = () => {
         </a>
       </div>
 
-      <div id="about" className="bg-background-tertiary space-y-6 px-10 py-10">
+      <div id="about" className="bg-background-tertiary space-y-6 p-8">
         <div className="h-10 flex items-center justify-center">
-          <h1 className="text-accent text-4xl font-bold w-fit border-b-2 border-accent">
-            Experience
-          </h1>
+          <h1 className="text-accent text-4xl font-bold w-fit">Experience</h1>
         </div>
         <Experience />
+        <Education />
+        <SkillsTools />
       </div>
-      <Education />
-      <SkillsTools />
+
+      <div id="work" className="bg-background-secondary space-y-10 py-8">
+        <div className="h-10 flex items-center justify-center">
+          <h1 className="text-accent text-4xl font-bold ">Project</h1>
+        </div>
+        <Project />
+      </div>
+
+      <div id="blog" className="bg-blue space-y-6 p-8">
+        <div className="h-10 flex items-center justify-center">
+          <h1 className="text-accent text-4xl font-bold ">Blog</h1>
+        </div>
+        <Blog />
+      </div>
+
+      <div id="contact" className="bg-olive space-y-5 p-8">
+        <div className="h-10 flex items-center justify-center">
+          <h1 className="text-accent text-4xl font-bold ">Contact Me</h1>
+        </div>
+
+        <div className="flex flex-col gap-4 items-center justify-center">
+          <div className="flex gap-4 items-center">
+            <p className="font-sans text-white"><span className="font-semibold mr-2">Email:</span>neilbrianaraiz@gmail.com</p>
+            <p className="font-sans text-white"><span className="font-semibold mr-2">Phone:</span>09631197877</p>
+          </div>
+
+          <div className="flex gap-4 items-center">
+            <a href="http://" target="_blank">
+              <img src={Fb} alt="facebook" className="h-8 w-8" />       
+            </a>
+            <a href="http://" target="_blank">
+              <img src={Ig} alt="facebook" className="h-8 w-8" />       
+            </a>
+            <a href="http://" target="_blank">
+              <img src={LinkedIn} alt="facebook" className="h-8 w-8" />       
+            </a>
+          </div>
+
+          <a href="#home" className="font-san text-lg mt-2 text-gray-400 hover:text-accent hover:border-b hover:border-accent">Back to top</a>
+        </div>
+      </div>
     </div>
   );
 };
-
 
 export default Home;

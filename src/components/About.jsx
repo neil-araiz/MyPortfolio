@@ -76,7 +76,7 @@ export const Education = () => {
   return (
     <div className="bg-background-tertiary space-y-8 px-10 py-10">
       <div className="h-10 flex items-center justify-center">
-        <h1 className="text-accent text-4xl font-bold w-fit border-b-2 border-accent">
+        <h1 className="text-accent text-4xl font-bold w-fit">
           Education
         </h1>
       </div>
@@ -105,9 +105,9 @@ export const Education = () => {
 
 export const SkillsTools = () => {
   return (
-    <div className="bg-background-tertiary space-y-6 px-10 py-10">
+    <div className="bg-background-tertiary space-y-6 ">
         <div className="h-10 flex items-center justify-center">
-          <h1 className="text-accent text-4xl font-bold w-fit border-b-2 border-accent">
+          <h1 className="text-accent text-4xl font-bold w-fit">
             Skills and Tools
           </h1>
         </div>

@@ -12,7 +12,10 @@ import GitIcon from "@/assets/git.svg";
 import FlutterIcon from "@/assets/flutter.svg";
 import FigmaIcon from "@/assets/figma.svg";
 import VsIcon from "@/assets/vscode.svg";
-import BitBucketIcon from "@/assets/bitbucket.svg"
+import BitBucketIcon from "@/assets/bitbucket.svg";
+import ExpressIcon from "@/assets/express.svg";
+import MongoDBIcon from "@/assets/mongoDB.svg";
+import NodeJSIcon from "@/assets/node.svg";
 
 export const SkillTools = [
   {
@@ -50,6 +53,18 @@ export const SkillTools = [
   {
     icon: PythonIcon,
     name: "Python",
+  },
+  {
+    icon: NodeJSIcon,
+    name: "Node.js",
+  },
+  {
+    icon: ExpressIcon,
+    name: "Express",
+  },
+  {
+    icon: MongoDBIcon,
+    name: "MongoDB",
   },
   {
     icon: ViteIcon,
