@@ -1,9 +1,10 @@
 import path from "path";
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: '/',
   plugins: [
     tailwindcss(),
     react()
@@ -14,11 +15,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['@vercel/analytics/react'],
-  },
-  build: {
-    rollupOptions: {
-      external: ['@vercel/analytics/react'],
-    },
+    include: ["@vercel/analytics/react"],
   },
 });
