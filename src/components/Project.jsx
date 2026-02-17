@@ -6,7 +6,7 @@ export const Project = () => {
     return (
       <div className={`flex flex-col md:flex-row ${direction === "right" ? "md:flex-row-reverse" : ""} items-center gap-8 md:gap-0 w-full relative group`}>
         
-        {/* Visual/Image Section */}
+        {/* Image Section */}
         <div className="w-full md:w-3/5 h-64 md:h-[500px] bg-background-light/5 rounded-lg overflow-hidden relative border border-accent/20 transition-all duration-300 group-hover:border-accent/50">
            {image ? (
              <div className="w-full h-full relative cursor-pointer hover:transition-all duration-500" onClick={() => link && window.open(link, '_blank')}>
@@ -15,7 +15,6 @@ export const Project = () => {
              </div>
            ) : (
              <>
-               {/* Abstract Gradient/Placeholder since we don't have actual project images yet */}
                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-60"></div>
                <div className="absolute inset-0 flex items-center justify-center text-accent/20 font-mono text-4xl font-bold rotate-[-15deg]">
                   {title.split(':')[0]}
