@@ -16,6 +16,8 @@ import BitBucketIcon from "@/assets/bitbucket.svg";
 import ExpressIcon from "@/assets/express.svg";
 import MongoDBIcon from "@/assets/mongoDB.svg";
 import NodeJSIcon from "@/assets/node.svg";
+import AntigravityIcon from "@/assets/antigravity.png";
+import CursorIcon from "@/assets/cursor.png";
 
 export const SkillTools = [
   {
@@ -93,5 +95,13 @@ export const SkillTools = [
   {
     icon: VsIcon,
     name: "VS Code",
+  },
+  {
+    icon: AntigravityIcon,
+    name: "Antigravity",
+  },
+  {
+    icon: CursorIcon,
+    name: "Cursor",
   },
 ];

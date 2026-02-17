@@ -1,82 +1,94 @@
 import React from "react";
+import { projects } from "@/context/ProjectList";
 
 export const Project = () => {
-  return (
-    <div className="flex flex-col items-center space-y-20 cursor-default">
-      <div className="flex items-center w-full h-[85vh] relative">
-        <div className="w-1/2 h-full bg-accent"></div>
-        <div className="absolute flex flex-col justify-around w-1/2 h-[85%] right-[10%] bg-background-light shadow-lg px-10 py-5">
-          <p className="text-lg font-sans font-semibold text-secondary tracking-widest">
-            Frontend Developer
-          </p>
-          <p className="text-4xl font-sans font-bold text-background-primary tracking-widest">
-            DIALECTO: A Filipino Dialect Learning System Utilizing Speech
-            Recognition
-          </p>
-          <p className="font-sans text-background-primary">
-            Dialecto is a web-based educational platform aimed at helping
-            Filipino elementary students learn local dialects. It includes
-            features such as voice recognition, interactive quizzes, and
-            progress tracking to support effective language learning. As the
-            frontend developer, I was responsible for developing responsive and
-            user-friendly interfaces suited for young users.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              React
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Tailwind CSS
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Express
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Node.js
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              PostgresSQL
-            </span>
-          </div>
+  const ProjectCard = ({ role, title, description, techStack, direction, link, image }) => {
+    return (
+      <div className={`flex flex-col md:flex-row ${direction === "right" ? "md:flex-row-reverse" : ""} items-center gap-8 md:gap-0 w-full relative group`}>
+        
+        {/* Visual/Image Section */}
+        <div className="w-full md:w-3/5 h-64 md:h-[500px] bg-background-light/5 rounded-lg overflow-hidden relative border border-accent/20 transition-all duration-300 group-hover:border-accent/50">
+           {image ? (
+             <div className="w-full h-full relative cursor-pointer hover:transition-all duration-500" onClick={() => link && window.open(link, '_blank')}>
+               <div className="absolute inset-0 bg-background-primary/30 transition-all duration-300 z-10"></div>
+               <img src={image} alt={title} className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500" />
+             </div>
+           ) : (
+             <>
+               {/* Abstract Gradient/Placeholder since we don't have actual project images yet */}
+               <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-60"></div>
+               <div className="absolute inset-0 flex items-center justify-center text-accent/20 font-mono text-4xl font-bold rotate-[-15deg]">
+                  {title.split(':')[0]}
+               </div>
+             </>
+           )}
         </div>
-      </div>
 
-      <div className="flex flex-row-reverse items-center w-full h-[85vh] relative">
-        <div className="w-1/2 h-full bg-accent"></div>
-        <div className="absolute flex flex-col justify-around w-1/2 h-[85%] left-[10%] bg-background-light shadow-lg px-10 py-5">
-          <p className="text-lg font-sans font-semibold text-secondary tracking-widest">
-            Lead Frontend Developer
-          </p>
-          <p className="text-4xl font-sans font-bold text-background-primary tracking-widest">
-            Student Transcript and Academic Records System
-          </p>
-          <p className="font-sans text-background-primary">
-            A web-based system designed to manage and maintain academic records
-            for elementary students from Grades 1 to 6. It enables efficient
-            storage, retrieval, report generation, and controlled release of
-            student records. As the lead frontend developer, I was responsible
-            for developing the frontend interface and integrating it with
-            backend APIs to ensure seamless data interaction and functionality.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              React
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Tailwind CSS
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Express
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              Node.js
-            </span>
-            <span className="text-white font-sans font-semibold bg-background-primary px-5 py-1 flex items-center rounded-full">
-              PostgresSQL
-            </span>
+        {/* Content Card */}
+        <div className={`w-full md:w-1/2 md:absolute ${direction === "left" ? "md:right-0 md:text-right md:items-end" : "md:left-0 md:text-left md:items-start"} inset-y-0 flex flex-col justify-center`}>
+          
+          <div className={`flex flex-col gap-4 p-6 md:p-8 bg-[#112240] rounded-lg shadow-xl shadow-black/30 backdrop-blur-sm border border-transparent hover:border-accent/30 transition-all duration-300 ${direction === "left" ? "md:items-end" : "md:items-start"}`}>
+            
+            <div>
+              <p className="font-mono text-accent text-sm md:text-base mb-1">
+                {role}
+              </p>
+              <h3 className="text-2xl md:text-3xl font-bold text-heading hover:text-accent transition-colors duration-300">
+                {link ? (
+                  <a href={link} target="_blank" rel="noopener noreferrer">
+                    {title}
+                  </a>
+                ) : (
+                  title
+                )}
+              </h3>
+            </div>
+
+            <div className={`bg-background-tertiary/50 md:bg-transparent rounded-lg p-0 md:p-0 text-secondary text-sm md:text-lg leading-relaxed ${direction === "left" ? "md:text-right" : "md:text-left"}`}>
+              {description}
+            </div>
+
+            <ul className={`flex flex-wrap gap-2 md:gap-3 text-sm font-mono text-secondary mt-2 ${direction === "left" ? "md:justify-end" : "md:justify-start"}`}>
+              {techStack.map((tech, index) => (
+                <li key={index} className="bg-accent/10 px-3 py-1 rounded-full text-accent text-xs md:text-sm">
+                  {tech}
+                </li>
+              ))}
+            </ul>
+
+            {link && (
+              <div className="mt-4">
+                 <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-3 border border-accent text-accent rounded hover:bg-accent/10 transition-all duration-300 font-mono text-sm"
+                >
+                  View Project
+                </a>
+              </div>
+            )}
+
           </div>
         </div>
       </div>
+    );
+  };
+
+  return (
+    <div className="flex flex-col gap-24 md:gap-32 w-full max-w-6xl mx-auto px-4 md:px-0 py-10 md:py-20">
+      {projects.map((project, index) => (
+        <ProjectCard
+          key={index}
+          role={project.role}
+          title={project.title}
+          description={project.description}
+          techStack={project.techStack}
+          direction={project.direction}
+          link={project.link}
+          image={project.image}
+        />
+      ))}
     </div>
   );
 };

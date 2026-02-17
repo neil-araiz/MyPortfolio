@@ -1,30 +1,30 @@
 export const experience = [
     {
-        date: "May 2025 - Present",
-        heading: "Mobile Developer - React Native (with expo)",
-        body: "Worked on the front-end development of mobile applications using React Native with Expo, focusing on building responsive and user-friendly interfaces. Collaborated closely with the backend team, integrating APIs to ensure seamless data flow and functionality. Assisted in backend tasks when needed, contributing to smooth coordination between front-end and back-end systems.",
+        date: "June 2025 - Present",
+        heading: "Full Stack Developer (Web & Mobile)",
+        body: "Develop and maintain production-ready web and mobile applications using React Native (Expo), React.js, Node.js (Express), and MongoDB. Implement end-to-end features across frontend and backend, including API development, third-party integrations, and database management. Contribute to system testing, debugging, and performance optimization while ensuring seamless data synchronization and feature consistency across platforms. Collaborate with cross-functional teams following Agile practices and standard coding guidelines to deliver scalable and user-focused solutions.",
         direction: "left",
         company: "Idess Interactive Technologies (IT) Inc."
     },
     {
-        date: "Feb 2025 - May 2025",
-        heading: "Front-End Development Intern – React & React Native",
-        body: "Developed responsive and functional web and mobile applications using React for the web and React Native (with Expo) for mobile platforms. Took part in building user-friendly interfaces, implementing features, and ensuring smooth integration with backend APIs. Worked collaboratively with the team to maintain code quality, optimize performance, and deliver seamless user experiences across both platforms. Strengthened skills in front-end development, cross-platform design, and modern development workflows.",
+        date: "February 2025 - May 2025",
+        heading: "Full Stack Developer Intern (Web & Mobile)",
+        body: "Contributed to the development of web and mobile applications using React.js, React Native (Expo), Node.js (Express), and MongoDB. Built responsive user interfaces, integrated RESTful APIs, and supported backend development tasks. Worked closely with senior developers to implement features, resolve issues, and ensure smooth integration between frontend and backend systems while following version control and collaborative development workflows.",
         direction: "right",
         company: "Idess Interactive Technologies (IT) Inc."
     },
     {
-        date: "September 2023 – December 2023",
-        heading: "Virtual Assistant – Administrative Support",
-        body: "Provided administrative support focusing on tasks involving Microsoft Office tools. Assisted in managing and organizing email communications, created and maintained Excel spreadsheets with visual data presentations and graphs, and helped design PowerPoint presentations for meetings and reports. Ensured accuracy, clarity, and professionalism across all documentation and supported the team in streamlining daily administrative processes.",
+        date: "April 2025 - June 2025",
+        heading: "Lead Frontend Developer",
+        body: "Led the frontend development of a student transcript and academic records management system using React.js. Designed and implemented responsive interfaces, integrated frontend components with backend APIs, and ensured smooth data flow and usability. Collaborated with the development team to deliver a reliable system for managing student academic information.",
         direction: "left",
-        company: "Freelance"
+        company: "IRAM II Elementary School – Academic Project"
     },
     {
-        date: "June 2022 – August 2022",
-        heading: "Administrative Aide Intern",
-        body: "Assisted with a variety of clerical tasks, including organizing files, managing data entry, and providing general administrative support to ensure smooth office operations. Helped individuals by answering inquiries and guiding them through the document submission process. Gained experience in office management, customer service, and effective communication within a professional setting.",
+        date: "2024 - 2025",
+        heading: "Frontend Developer (Thesis Project)",
+        body: "Developed responsive and user-friendly interfaces for a web-based Filipino dialect learning platform using React.js. Implemented features supporting interactive learning, voice recognition integration, and progress tracking. Focused on creating an intuitive user experience tailored for elementary students while collaborating with the team to deliver a complete and functional system.",
         direction: "right",
-        company: "Olongapo City Hall - Local Civil Registry"
-    },
-]
+        company: "DIALECTO: Filipino Dialect Learning System"
+    }
+];
