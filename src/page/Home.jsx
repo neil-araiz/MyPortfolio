@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 import { Header } from "@/components/Header";
 import { Education, Experience, SkillsTools } from "@/components/About";
 import { Project } from "@/components/Project";
@@ -7,6 +8,36 @@ import Github from "@/assets/github.svg";
 import LinkedIn from "@/assets/linkedin.png";
 
 const Home = () => {
+  const form = useRef();
+  const [status, setStatus] = useState('idle');
+  const [message, setMessage] = useState('');
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+
+    emailjs.sendForm(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      form.current,
+      PUBLIC_KEY
+    )
+      .then((result) => {
+          console.log(result.text);
+          setStatus('success');
+          setMessage('Message sent successfully! I will get back to you soon.');
+          form.current.reset();
+      }, (error) => {
+          console.log(error.text);
+          setStatus('error');
+          setMessage('Something went wrong. Please try again later.');
+      });
+  };
+
   return (
     <div id="home" className="w-full bg-background-primary">
       <Header
@@ -89,6 +120,67 @@ const Home = () => {
               </p>
             </div>
           </div>
+
+          <div className="w-full h-px bg-accent/10 my-2"></div>
+
+          <form 
+            ref={form}
+            onSubmit={sendEmail}
+            className="w-full flex flex-col gap-6 text-left"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name" className="text-accent font-mono text-sm ml-1">Name</label>
+                <input 
+                  type="text" 
+                  name="name" 
+                  id="name" 
+                  placeholder="Your Name"
+                  required 
+                  className="bg-background-primary border border-accent/20 rounded-md p-3 text-primary focus:outline-none focus:border-accent/60 transition-all duration-300 placeholder:text-secondary/30" 
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-accent font-mono text-sm ml-1">Email</label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  placeholder="name@example.com"
+                  required 
+                  className="bg-background-primary border border-accent/20 rounded-md p-3 text-primary focus:outline-none focus:border-accent/60 transition-all duration-300 placeholder:text-secondary/30" 
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="message" className="text-accent font-mono text-sm ml-1">Message</label>
+              <textarea 
+                name="message" 
+                id="message" 
+                rows="5" 
+                placeholder="Write your message here..."
+                required 
+                className="bg-background-primary border border-accent/20 rounded-md p-3 text-primary focus:outline-none focus:border-accent/60 transition-all duration-300 resize-none placeholder:text-secondary/30"
+              ></textarea>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 w-full">
+              <button 
+                type="submit" 
+                disabled={status === 'sending'}
+                className={`mt-2 w-full md:w-fit px-8 py-4 border-2 border-accent text-accent font-mono font-bold rounded transition-all duration-300 self-center ${status === 'sending' ? 'opacity-50 cursor-not-allowed' : 'hover:bg-accent/10'}`}
+              >
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {message && (
+                <p className={`font-mono text-sm mt-2 ${status === 'success' ? 'text-accent' : 'text-red-400'}`}>
+                  {status === 'success' ? '✓ ' : '✕ '} {message}
+                </p>
+              )}
+            </div>
+          </form>
 
           <div className="w-full h-px bg-accent/10 my-2"></div>
 

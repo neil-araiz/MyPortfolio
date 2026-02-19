@@ -23,24 +23,19 @@ export const Experience = () => {
   return (
     <div className="flex flex-col gap-y-10 w-full max-w-5xl mx-auto px-2 md:px-0 my-10 relative">
       
-      {/* Central Line for Desktop */}
       <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-accent/30 to-transparent hidden md:block transform -translate-x-1/2"></div>
       
-      {/* Mobile Line (Left side) */}
       <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-accent/30 to-transparent md:hidden"></div>
 
       {experience.map((exp, key) => {
         return (
           <div key={key} className="relative w-full">
-            {/* Timeline Dot */}
             <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full border-2 border-accent bg-[#0a192f] transform -translate-x-1/2 mt-6 z-10 transition-all duration-300 group-hover:bg-accent"></div>
 
             <div className={`flex flex-col md:flex-row items-start w-full ${key % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
               
-              {/* Empty Space for Alignment */}
               <div className="hidden md:block w-[50%]"></div>
 
-              {/* Content Card */}
               <div className="w-full md:w-[50%] pl-12 md:pl-0 md:px-8">
                  <ExpCard
                   date={exp.date}

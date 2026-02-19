@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize Gemini API - it will automatically read GEMINI_API_KEY from environment
 const genAI = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 // System prompt with portfolio knowledge base
@@ -269,23 +268,14 @@ Your goal is to help visitors quickly understand Neil’s qualifications, experi
 `;
 
 
-/**
- * Send a message to Gemini API and get a response
- * @param {string} message - User's message
- * @param {Array} chatHistory - Previous chat messages for context
- * @returns {Promise<string>} - AI response
- */
 export async function sendMessageToGemini(message, chatHistory = []) {
   try {
-    // Build conversation history for context
     const conversationContext = chatHistory
       .map((msg) => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
       .join('\n');
 
-    // Combine system prompt, history, and new message
     const fullPrompt = `${SYSTEM_PROMPT}\n\n${conversationContext ? `Previous conversation:\n${conversationContext}\n\n` : ''}User: ${message}\n\nAssistant:`;
 
-    // Generate response using the official Google GenAI API
     const response = await genAI.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: fullPrompt,
@@ -295,7 +285,6 @@ export async function sendMessageToGemini(message, chatHistory = []) {
   } catch (error) {
     console.error('Error calling Gemini API:', error);
     
-    // Provide user-friendly error messages
     if (error.message?.includes('API key') || error.message?.includes('apiKey')) {
       return "I'm having trouble connecting. Please make sure the API key is configured correctly in the .env file.";
     }

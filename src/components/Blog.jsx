@@ -6,7 +6,6 @@ export const Blog = () => {
   const BlogCard = ({ image, title, description, link }) => {
     return (
       <div className="w-full md:w-[45%] lg:w-[35%] bg-[#112240] rounded-xl overflow-hidden shadow-xl shadow-black/30 border border-transparent hover:border-accent/30 hover:-translate-y-2 transition-all duration-300 group flex flex-col h-[60vh]">
-        {/* Image Container */}
         <div className="w-full h-60 overflow-hidden relative">
           <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10"></div>
           <img
@@ -16,7 +15,6 @@ export const Blog = () => {
           />
         </div>
 
-        {/* Content Container */}
         <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
           <div>
             <h1 className="text-heading text-xl font-bold mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">

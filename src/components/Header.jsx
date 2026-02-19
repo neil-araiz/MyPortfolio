@@ -35,7 +35,6 @@ export const Header = ({ home, about, work, blog, contact }) => {
     >
       <img src={MyProf} alt="Logo" className="h-8 w-8 sm:h-10 sm:w-10 rounded-full" />
 
-      {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-6">
         <nav className="flex justify-end space-x-6 font-mono">
           <a href={home} className={navLink}>
@@ -63,7 +62,6 @@ export const Header = ({ home, about, work, blog, contact }) => {
         </a>
       </div>
 
-      {/* Mobile Hamburger Menu */}
       <button
         onClick={toggleMobileMenu}
         className="md:hidden flex flex-col gap-1.5 z-50"
@@ -86,7 +84,6 @@ export const Header = ({ home, about, work, blog, contact }) => {
         ></span>
       </button>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
           className="md:hidden fixed inset-0 top-[10vh] bg-background-primary/95 backdrop-blur-md z-40"
