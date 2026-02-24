@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MyProf from "@/assets/neil.png";
-import ResumePDF from "@/assets/NeilBriian-Araiz-Resume.pdf";
+import ResumePDF from "@/assets/NeilBrian-Araiz-Resume.pdf";
 
 export const Header = ({ home, about, work, blog, contact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +55,7 @@ export const Header = ({ home, about, work, blog, contact }) => {
         </nav>
         <a
           href={ResumePDF}
-          download="NeilBriian-Araiz-Resume.pdf"
+          download="NeilBrian-Araiz-Resume.pdf"
           className="border-2 rounded border-accent text-accent py-1 px-4 cursor-pointer transition-all duration-150 hover:bg-accent hover:text-black hover:font-semibold"
         >
           Resume
@@ -107,7 +107,7 @@ export const Header = ({ home, about, work, blog, contact }) => {
             </a>
             <a
               href={ResumePDF}
-              download="NeilBriian-Araiz-Resume.pdf"
+              download="NeilBrian-Araiz-Resume.pdf"
               onClick={closeMobileMenu}
               className="mx-4 mt-4 text-center border-2 rounded border-accent text-accent py-2 px-4 cursor-pointer transition-all duration-150 hover:bg-accent hover:text-black hover:font-semibold"
             >

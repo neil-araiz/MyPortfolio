@@ -9,7 +9,6 @@ import HtmlIcon from "@/assets/html.svg";
 import CssIcon from "@/assets/css.svg";
 import GhIcon from "@/assets/github.svg";
 import GitIcon from "@/assets/git.svg";
-import FlutterIcon from "@/assets/flutter.svg";
 import FigmaIcon from "@/assets/figma.svg";
 import VsIcon from "@/assets/vscode.svg";
 import BitBucketIcon from "@/assets/bitbucket.svg";
@@ -18,11 +17,19 @@ import MongoDBIcon from "@/assets/mongoDB.svg";
 import NodeJSIcon from "@/assets/node.svg";
 import AntigravityIcon from "@/assets/antigravity.png";
 import CursorIcon from "@/assets/cursor.png";
+import FastApiIcon from "@/assets/fastapi.svg";
+import PostgresSQLIcon from "@/assets/postgresql.svg";
+import NextJSIcon from "@/assets/nextjs.svg";
+import SocketIcon from "@/assets/socket.svg";
 
 export const SkillTools = [
   {
     icon: ReactIcon,
     name: "React",
+  },
+  {
+    icon: NextJSIcon,
+    name: "Next.js",
   },
   {
     icon: ReactIcon,
@@ -49,12 +56,12 @@ export const SkillTools = [
     name: "CSS3",
   },
   {
-    icon: FlutterIcon,
-    name: "Flutter",
-  },
-  {
     icon: PythonIcon,
     name: "Python",
+  },
+  {
+    icon: FastApiIcon,
+    name: "FastAPI",
   },
   {
     icon: NodeJSIcon,
@@ -65,8 +72,16 @@ export const SkillTools = [
     name: "Express",
   },
   {
+    icon: SocketIcon,
+    name: "Socket.IO",
+  },
+  {
     icon: MongoDBIcon,
     name: "MongoDB",
+  },
+  {
+    icon: PostgresSQLIcon,
+    name: "PostgreSQL",
   },
   {
     icon: ViteIcon,
