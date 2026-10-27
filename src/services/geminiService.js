@@ -1,6 +1,17 @@
 import { GoogleGenAI } from "@google/genai";
 
-const genAI = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+let genAIInstance = null;
+
+function getGeminiClient() {
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error("Gemini API key is not configured.");
+  }
+  if (!genAIInstance) {
+    genAIInstance = new GoogleGenAI({ apiKey });
+  }
+  return genAIInstance;
+}
 
 // System prompt with portfolio knowledge base
 const SYSTEM_PROMPT = `
@@ -276,6 +287,7 @@ export async function sendMessageToGemini(message, chatHistory = []) {
 
     const fullPrompt = `${SYSTEM_PROMPT}\n\n${conversationContext ? `Previous conversation:\n${conversationContext}\n\n` : ''}User: ${message}\n\nAssistant:`;
 
+    const genAI = getGeminiClient();
     const response = await genAI.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: fullPrompt,

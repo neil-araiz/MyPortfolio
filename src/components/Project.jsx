@@ -2,90 +2,130 @@ import React from "react";
 import { projects } from "@/context/ProjectList";
 
 export const Project = () => {
-  const ProjectCard = ({ role, title, description, techStack, direction, link, image }) => {
-    return (
-      <div className={`flex flex-col md:flex-row ${direction === "right" ? "md:flex-row-reverse" : ""} items-center gap-8 md:gap-0 w-full relative group`}>
-        
-        <div className="w-full md:w-3/5 h-64 md:h-[500px] bg-background-light/5 rounded-lg overflow-hidden relative border border-accent/20 transition-all duration-300 group-hover:border-accent/50">
-           {image ? (
-             <div className="w-full h-full relative cursor-pointer hover:transition-all duration-500" onClick={() => link && window.open(link, '_blank')}>
-               <div className="absolute inset-0 bg-background-primary/30 transition-all duration-300 z-10"></div>
-               <img src={image} alt={title} className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500" />
-             </div>
-           ) : (
-             <>
-               <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-60"></div>
-               <div className="absolute inset-0 flex items-center justify-center text-accent/20 font-mono text-4xl font-bold rotate-[-15deg]">
-                  {title.split(':')[0]}
-               </div>
-             </>
-           )}
-        </div>
+  return (
+    <div className="flex flex-col gap-12 sm:gap-16 w-full max-w-6xl mx-auto px-4 sm:px-6">
+      {projects.map((project, index) => {
+        const isEven = index % 2 === 0;
 
-        <div className={`w-full md:w-1/2 md:absolute ${direction === "left" ? "md:right-0 md:text-right md:items-end" : "md:left-0 md:text-left md:items-start"} inset-y-0 flex flex-col justify-center`}>
-          
-          <div className={`flex flex-col gap-4 p-6 md:p-8 bg-[#112240] rounded-lg shadow-xl shadow-black/30 backdrop-blur-sm border border-transparent hover:border-accent/30 transition-all duration-300 ${direction === "left" ? "md:items-end" : "md:items-start"}`}>
-            
-            <div>
-              <p className="font-mono text-accent text-sm md:text-base mb-1">
-                {role}
-              </p>
-              <h3 className="text-2xl md:text-3xl font-bold text-heading hover:text-accent transition-colors duration-300">
-                {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer">
-                    {title}
+        return (
+          <div
+            key={index}
+            className="group relative bg-[#112240]/70 hover:bg-[#112240] border border-white/5 hover:border-accent/30 rounded-2xl p-5 sm:p-8 transition-all duration-300 shadow-xl shadow-black/20"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+              {/* Media Preview Column */}
+              <div
+                className={`lg:col-span-7 overflow-hidden rounded-xl border border-white/10 group-hover:border-accent/30 bg-[#0a192f] transition-all duration-300 ${
+                  isEven ? "lg:order-1" : "lg:order-2"
+                }`}
+              >
+                {project.image ? (
+                  <a
+                    href={project.link || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative overflow-hidden aspect-video cursor-pointer"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[#0a192f]/20 group-hover:bg-transparent transition-colors duration-300" />
                   </a>
                 ) : (
-                  title
+                  <div className="aspect-video flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#112240] to-[#0a192f]">
+                    <span className="font-mono text-accent text-xs tracking-wider uppercase mb-2">
+                      Mobile Platform
+                    </span>
+                    <h4 className="text-xl sm:text-2xl font-bold text-heading">
+                      {project.title}
+                    </h4>
+                    <p className="text-secondary text-xs sm:text-sm mt-2 max-w-md">
+                      Published on Google Play Store with real-time chat and billing
+                    </p>
+                  </div>
                 )}
-              </h3>
-            </div>
-
-            <div className={`bg-background-tertiary/50 md:bg-transparent rounded-lg p-0 md:p-0 text-secondary text-sm md:text-lg leading-relaxed ${direction === "left" ? "md:text-right" : "md:text-left"}`}>
-              {description}
-            </div>
-
-            <ul className={`flex flex-wrap gap-2 md:gap-3 text-sm font-mono text-secondary mt-2 ${direction === "left" ? "md:justify-end" : "md:justify-start"}`}>
-              {techStack.map((tech, index) => (
-                <li key={index} className="bg-accent/10 px-3 py-1 rounded-full text-accent text-xs md:text-sm">
-                  {tech}
-                </li>
-              ))}
-            </ul>
-
-            {link && (
-              <div className="mt-4">
-                 <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 border border-accent text-accent rounded hover:bg-accent/10 transition-all duration-300 font-mono text-sm"
-                >
-                  View Project
-                </a>
               </div>
-            )}
 
+              {/* Content Column */}
+              <div
+                className={`lg:col-span-5 flex flex-col justify-center space-y-4 ${
+                  isEven ? "lg:order-2" : "lg:order-1"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="w-2 h-0.5 bg-accent" />
+                    <span className="font-mono text-xs text-accent uppercase tracking-wider font-semibold">
+                      {project.role}
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-heading group-hover:text-accent transition-colors">
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline decoration-accent/40 underline-offset-4"
+                      >
+                        {project.title}
+                      </a>
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
+                </div>
+
+                <p className="text-secondary text-sm sm:text-base leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Tech Stack Pills */}
+                <ul className="flex flex-wrap gap-2 pt-1">
+                  {project.techStack.map((tech, techIdx) => (
+                    <li
+                      key={techIdx}
+                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Link Action */}
+                {project.link && (
+                  <div className="pt-2">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-accent hover:text-[#0a192f] hover:bg-accent px-4 py-2 rounded-lg border border-accent transition-all duration-200"
+                    >
+                      <span>Explore Project</span>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <div className="flex flex-col gap-24 md:gap-32 w-full max-w-6xl mx-auto px-4 md:px-0 py-10 md:py-20">
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={index}
-          role={project.role}
-          title={project.title}
-          description={project.description}
-          techStack={project.techStack}
-          direction={project.direction}
-          link={project.link}
-          image={project.image}
-        />
-      ))}
+        );
+      })}
     </div>
   );
 };
+
+export default Project;

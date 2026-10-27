@@ -22,101 +22,47 @@ import PostgresSQLIcon from "@/assets/postgresql.svg";
 import NextJSIcon from "@/assets/nextjs.svg";
 import SocketIcon from "@/assets/socket.svg";
 
-export const SkillTools = [
+export const SkillCategories = [
   {
-    icon: ReactIcon,
-    name: "React",
+    category: "Frontend & Mobile",
+    skills: [
+      { name: "React", icon: ReactIcon },
+      { name: "Next.js", icon: NextJSIcon },
+      { name: "React Native", icon: ReactIcon },
+      { name: "TypeScript", icon: TsIcon },
+      { name: "JavaScript", icon: JsIcon },
+      { name: "Tailwind CSS", icon: TailwindIcon },
+      { name: "Vite.js", icon: ViteIcon },
+      { name: "HTML5", icon: HtmlIcon },
+      { name: "CSS3", icon: CssIcon },
+    ],
   },
   {
-    icon: NextJSIcon,
-    name: "Next.js",
+    category: "Backend & Database",
+    skills: [
+      { name: "Node.js", icon: NodeJSIcon },
+      { name: "Express", icon: ExpressIcon },
+      { name: "FastAPI", icon: FastApiIcon },
+      { name: "Python", icon: PythonIcon },
+      { name: "PostgreSQL", icon: PostgresSQLIcon },
+      { name: "MongoDB", icon: MongoDBIcon },
+      { name: "Socket.IO", icon: SocketIcon },
+    ],
   },
   {
-    icon: ReactIcon,
-    name: "React Native",
-  },
-  {
-    icon: JsIcon,
-    name: "JavaScript",
-  },
-  {
-    icon: TsIcon,
-    name: "TypeScript",
-  },
-  {
-    icon: TailwindIcon,
-    name: "Tailwind CSS",
-  },
-  {
-    icon: HtmlIcon,
-    name: "HTML5",
-  },
-  {
-    icon: CssIcon,
-    name: "CSS3",
-  },
-  {
-    icon: PythonIcon,
-    name: "Python",
-  },
-  {
-    icon: FastApiIcon,
-    name: "FastAPI",
-  },
-  {
-    icon: NodeJSIcon,
-    name: "Node.js",
-  },
-  {
-    icon: ExpressIcon,
-    name: "Express",
-  },
-  {
-    icon: SocketIcon,
-    name: "Socket.IO",
-  },
-  {
-    icon: MongoDBIcon,
-    name: "MongoDB",
-  },
-  {
-    icon: PostgresSQLIcon,
-    name: "PostgreSQL",
-  },
-  {
-    icon: ViteIcon,
-    name: "Vite.js",
-  },
-  {
-    icon: GitIcon,
-    name: "Git",
-  },
-  {
-    icon: GhIcon,
-    name: "Github",
-  },
-  {
-    icon: BitBucketIcon,
-    name: "BitBucket",
-  },
-  {
-    icon: PostmanIcon,
-    name: "Postman",
-  },
-  {
-    icon: FigmaIcon,
-    name: "Figma",
-  },
-  {
-    icon: VsIcon,
-    name: "VS Code",
-  },
-  {
-    icon: AntigravityIcon,
-    name: "Antigravity",
-  },
-  {
-    icon: CursorIcon,
-    name: "Cursor",
+    category: "Tools & Development",
+    skills: [
+      { name: "Git", icon: GitIcon },
+      { name: "GitHub", icon: GhIcon },
+      { name: "BitBucket", icon: BitBucketIcon },
+      { name: "Postman", icon: PostmanIcon },
+      { name: "Figma", icon: FigmaIcon },
+      { name: "VS Code", icon: VsIcon },
+      { name: "Cursor", icon: CursorIcon },
+      { name: "Antigravity", icon: AntigravityIcon },
+    ],
   },
 ];
+
+export const SkillTools = SkillCategories.flatMap((c) => c.skills);
+
